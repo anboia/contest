@@ -7,31 +7,15 @@
 using namespace std;
 
 struct P8XCoinChangeAnother {
-	int n;
+	int n, i, j;
 	
     vector<long long> solve(int N, long long coins_sum, long long coins_count) {
 		vector<long long> ans(N);
-		vector<long long> m(64);
-
-		// transforming coins_sum to a vector of bits
-		long long x = coins_sum;
-		for(int i = 0 ; i<64 ; i++, x>>=1 ) m[i] = x&1;
+		long long x = coins_sum, coins_total=0;
 		
-		int i = N-1, j=62;
-		
-		// start ans vecor, which will have the minimal number of coins
-		// N[i] += M[j]*2^(j-i)  such that i<=j
-		for(;j>=i;j--)m[j] = (m[j+1]<<1)+m[j];
-		
-		long long coins_total = ans[i] = m[i];
-		
-		for(;j>=0;j--)ans[j] += m[j], coins_total+= m[j]&1;
-		
-		// there is no way to have less coins....
+		for(i = 0 ; i<N-1 ; i++, x>>=1 ) coins_total += ans[i] = x&1;
+		coins_total += ans[N-1] = x;
 		if(coins_count < coins_total )return vector<long long>(0);
-		
-		// distribute the coins in sucha a way that we can increase the number of coins..
-		// from the right to the left.. to garantee the laxicographical order
 		for(i=N-2 ; i>=0 && coins_total < coins_count ; i-- ){
 			if(!ans[i+1])continue;
 			if( ans[i+1] + coins_total <= coins_count ){
@@ -46,14 +30,12 @@ struct P8XCoinChangeAnother {
 			}
 			
 		}
-		
-		
 		if(coins_total == coins_count) return ans;
-		
-		
 		return vector<long long>(0);
     }
 };
+
+
 
 // BEGIN CUT HERE
 #include <cstdio>
@@ -176,7 +158,6 @@ namespace moj_harness {
 		}
 
 		// custom cases
-
       case 4: {
 			int N                     = 58;
 			long long coins_sum       = 576460752303423487LL;

@@ -1,3 +1,7 @@
+// Codeforces Round #227 (Div. 2)
+// Verdict: Accepted
+// By Andre Saboia [UFPE]
+
 #include <cstdio>
 #include <iostream>
 
