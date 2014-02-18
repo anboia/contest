@@ -20,32 +20,30 @@
 using namespace std;
 
 
-int d[256];
-int a[256];
-char s[200];
 int main(){
-	cin>> s;
-	d['n']=2;
-	d['e']=3;
-	d['i']=1;
-	d['t']=1;
-
-	for(int i=0;s[i];i++){
-		a[s[i]]++;
-	}
-	int r=0;
-	while(1){
-		a['n']-=d['n'];
-		a['e']-=d['e'];
-		a['i']-=d['i'];
-		a['t']-=d['t'];
+	int n;
+	cin>>n;
+	if(n<=3){
+		cout<<(1<<(n+1));
+	}else{
+	int k=0;
+	n-=2;
+	for(int x=0, y=n;x<=n && y>0;x++){
+		if((sqrt(double(x*x+y*y)))<=n+0.0000000001){
+			k++;
+			db(x _ y);
+		}else{
+			while(!((sqrt(double(x*x+y*y)))<=n+0.0000000001)){
+				k++;
+				y--;
+			}
+			k++;
+		}
 		
-		if(a['n']>=0 &&a['e']>=0 &&a['i']>=0 &&a['t']>=0)r++;
-		else break;
+		
 	}
-	a['n']++;
-	if(a['n']<0)r--;
-	
-	cout<<r;
+	cout<<k*4<<endl;
+	}
 	return 0;
+	
 }

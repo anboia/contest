@@ -1,5 +1,5 @@
-// Codeforces Round #214 (Div. 2)
-// Verdict: Accepted
+// Codeforces Round #
+// Verdict: Unknown
 // By Andre Saboia [UFPE]
 
 #include <cstdio>
@@ -19,27 +19,39 @@
 
 using namespace std;
 
+
+int s[170][170];
+int n;
+double a[170][170], b[170][170];
 int main(){
-	int n, k, a[100000];
-	cin >> n>> k;
+	cin>> n;
+	for(int i=0;i<n;i++)
+	for(int j=0;j<n;j++){
+		scanf("%d", &s[i][j]);
+		
+	}
+	for(int i=0;i<n;i++)
+	for(int j=0;j<n;j++){
+		a[i][j]=a[j][i] = (s[i][j]+s[j][i])/2.0;
+		if(i==j)continue;
+		b[i][j] = s[i][j]-a[i][j];
+		b[j][i] = -b[i][j];
+	}
 	for(int i=0;i<n;i++){
-		scanf("%d", &a[i]);
-	}
-	int r = 2000000000;
-	int x=0;
-	for(int i=0;i<k;i++){
-		int sum=0;
-		for(int j=i;j<n;j+=k){
-			sum+=a[j];
+		printf("%.8lf", a[i][0]);
+		for(int j=1;j<n;j++){
+			printf(" %.8lf", a[i][j]);
 		}
-		if(sum<r){
-			r = sum;
-			x = i;
-		}
+		printf("\n");
 	}
 	
-	cout<<x+1<<endl;
-	
-	
+	for(int i=0;i<n;i++){
+		printf("%.8lf", b[i][0]);
+		for(int j=1;j<n;j++){
+			printf(" %.8lf", b[i][j]);
+		}
+		printf("\n");
+	}
 	return 0;
+	
 }
