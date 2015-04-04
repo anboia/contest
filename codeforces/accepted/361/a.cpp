@@ -1,5 +1,5 @@
-// Codeforces Round #
-// Verdict: Unknown
+// Codeforces Round #210 (Div. 2)
+// Verdict: Accepted
 // By Andre Saboia [UFPE]
 
 #include <cstdio>
@@ -18,12 +18,18 @@
 #define _ << " _ " <<
 
 using namespace std;
-
-
+int n, k;
 int main(){
-	int n;
-	cin>>n;
-	cout<<((n+n+1)*(n+n+1)-k-4)<<endl;
+	scanf("%d%d", &n, &k);
+	for (int i = 0; i < n; ++i)
+	{
+		for (int j = 0; j < n; ++j)
+		{
+			if(j)printf(" ");
+			if(i == j)printf("%d", k);
+			else printf("0");
+		}
+		printf("\n");
+	}
 	return 0;
-	
 }
