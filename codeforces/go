@@ -1,0 +1,2 @@
+#!/bin/sh
+for i in {a..e}; do cp ./template.cpp ./solve/${i}.cpp; done
