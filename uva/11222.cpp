@@ -47,7 +47,7 @@ void solve() {
         }
     }
 
-    // int nmax = 0;
+    int nmax = 0;
     
     for (int j=0; j<3; j++) {
         for (int h=0; h<a[j].size(); h++) {
