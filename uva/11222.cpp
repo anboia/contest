@@ -36,14 +36,10 @@ void solve() {
     for (int j=0; j<3; j++) {
         int m;
         cin>>m;
-        // a[j].resize(m);
-        for(int h=0; h<m; m++) {
-            // cin>>a[j][h];
-            // count[a[j][h]]++;
-            int temp;
-            cin>>temp;
-            a[j].push_back(temp);
-            count[temp]++;
+        a[j].resize(m);
+        for(int h=0; h<m; h++) {
+            cin>>a[j][h];
+            count[a[j][h]]++;
         }
     }
 
@@ -61,7 +57,6 @@ void solve() {
     }
 
     cout << "Case #" << c << ":\n";
-    // print the guys with max unique probles
 
     for (int j=0; j<3; j++) {
         if (memo[j].size() == nmax) {
